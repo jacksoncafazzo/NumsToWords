@@ -48,7 +48,12 @@ namespace NumtoWordsNamespace
       string _returnString = "";
       int deleter;
 
-
+      if (_number > 9999 && _number < 100000)
+      {
+        deleter = _number / 10000;
+        _returnString = _returnString + _tensString[deleter-1] + " ";
+        _number = _number - (deleter * 10000);
+      }
       if (_number > 999 && _number < 10000)
       {
         deleter = _number / 1000;
@@ -61,17 +66,25 @@ namespace NumtoWordsNamespace
         _returnString = _returnString + _singlesString[deleter] + " hundred and ";
         _number = _number - (deleter * 100);
       }
+
       if (_number > 19 && _number < 100)
       {
         deleter = _number / 10;
-        int onesPlace = _number % 10;
-        _returnString = _returnString + _tensString[deleter-1] + " " + _singlesString[onesPlace];
+        if (_number % 10 == 0)
+        {
+          _returnString = _returnString + _tensString[deleter-1];
+        }
+        else
+        {
+          int onesPlace = _number % 10;
+          _returnString = _returnString + _tensString[deleter-1] + " " + _singlesString[onesPlace];
+        }
       }
       if (_number > 9 && _number < 20)
       {
         _returnString = _returnString + _teensString[_number];
       }
-      if (_number < 10)
+      if (_number < 10 && _number != 0)
       {
         _returnString = _returnString + _singlesString[_number];
       }
