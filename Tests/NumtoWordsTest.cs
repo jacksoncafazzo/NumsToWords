@@ -2,32 +2,33 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace ScrabbleNamespace
+namespace NumtoWordsNamespace
 {
-  public class ScrabbleTest
+  public class NumtoWordsTest
   {
     [Fact]
-    public void ScrabbleScore_inputWordKGetScore_true()
+    public void WordIt_Sending1WillReturnOne_true()
     {
-      Scrabble score = new Scrabble("K");
-      Assert.Equal(5, score.ScrabbleScore());
+      NumtoWords newNumToWords = new NumtoWords(1);
+      Assert.Equal("one", newNumToWords.WordIt());
     }
     [Fact]
-    public void ScrabbleScore_inputWordKittyGetScore_true()
+    public void WordIt_Sending11WillReturnEleven_true()
     {
-      Scrabble score = new Scrabble("KITTY");
-      Assert.Equal(12, score.ScrabbleScore());
+      NumtoWords newNumToWords = new NumtoWords(11);
+      Assert.Equal("eleven", newNumToWords.WordIt());
     }
     [Fact]
-    public void ScrabbleScroe_inputWordCatLowerCaseGetScore_true()
+    public void WordIt_Sending19WillReturnNineteen_true()
     {
-      Scrabble score = new Scrabble("cat");
-      Assert.Equal(5, score.ScrabbleScore());
+      NumtoWords newNumToWords = new NumtoWords(19);
+      Assert.Equal("nineteen", newNumToWords.WordIt());
     }
-
-
+    [Fact]
+    public void WordIt_Sending37WillReturnThirtySeven_true()
+    {
+      NumtoWords newNumToWords = new NumtoWords(37);
+      Assert.Equal("thirty seven", newNumToWords.WordIt());
+    }
   }
-
-
-
 }
