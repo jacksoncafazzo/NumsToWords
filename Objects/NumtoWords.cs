@@ -49,15 +49,17 @@ namespace NumtoWordsNamespace
       int deleter;
 
 
-
+      if (_number > 999 && _number < 10000)
+      {
+        deleter = _number / 1000;
+        _returnString = _returnString + _singlesString[deleter] + " thousand, ";
+        _number = _number - (deleter * 1000);
+      }
       if (_number > 99 && _number < 1000)
       {
         deleter = _number / 100;
         _returnString = _returnString + _singlesString[deleter] + " hundred and ";
         _number = _number - (deleter * 100);
-        Console.WriteLine(_number);
-        Console.WriteLine("i k33l j00");
-        Console.WriteLine(_returnString);
       }
       if (_number > 19 && _number < 100)
       {
