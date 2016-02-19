@@ -47,12 +47,24 @@ namespace NumtoWordsNamespace
     {
       string _returnString = "";
       int deleter;
-
+      int tenFinder;
+      if (_number > 99999 && _number < 1000000)
+      {
+        deleter = _number / 100000;
+        _returnString = _returnString + _singlesString[deleter] + " hundred and ";
+        _number = _number - (deleter * 100000);
+      }
       if (_number > 9999 && _number < 100000)
       {
         deleter = _number / 10000;
+        tenFinder = _number / 1000;
         _returnString = _returnString + _tensString[deleter-1] + " ";
+        if (tenFinder % 10 == 0)
+        {
+          _returnString = _returnString + "thousand, ";
+        }
         _number = _number - (deleter * 10000);
+
       }
       if (_number > 999 && _number < 10000)
       {
