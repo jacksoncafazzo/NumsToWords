@@ -8,24 +8,22 @@ namespace NumtoWordsNamespace
   public class NumtoWords
   {
     private int _number;
-    //
-    // private static List<Scrabble> _instances = new List<Scrabble>(){};
+    private string _returnString;
+    private static List<NumtoWords> _instances = new List<NumtoWords>(){};
 
-    private Dictionary<int, string> _onesPlace = new Dictionary<int, string>()
+    public NumtoWords(int input)
     {
-      { 1, "one" },
-      { 2, "two" },
-      { 3, "three" },
-      { 4, "four" },
-      { 5, "five" },
-      { 6, "six" },
-      { 7, "seven" },
-      { 8, "eight" },
-      { 9, "nine" },
-      { 0, "" },
-    };
+      _number = input;
+      // _numLength = Math.Floor(roundy);
+      //  (decimal)Math.Floor((double)Math.Log10(input) + 1);
+      _instances.Add(this);
+    }
+    //
 
-    private Dictionary<int, string> _teens = new Dictionary<int, string>()
+
+
+
+    private Dictionary<int, string> _teensString = new Dictionary<int, string>()
     {
       { 10, "ten" },
       { 11, "eleven" },
@@ -39,46 +37,64 @@ namespace NumtoWordsNamespace
       { 19, "nineteen" },
     };
 
-    private Dictionary<int, string> _tens = new Dictionary<int, string>()
-    {
-      { 20, "twenty" },
-      { 30, "thirty" },
-      { 40, "fourty" },
-      { 50, "fifty" },
-      { 60, "sixty" },
-      { 70, "seventy" },
-      { 80, "eighty" },
-      { 90, "ninety" }
-    };
+    private string[] _singlesString = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    private string[] _tensString = { "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
-    public NumtoWords(int input)
-    {
-      _number = input;
-    }
+
+
 
     public string WordIt()
     {
-      string result = "";
+      string _returnString = "";
+      int deleter;
 
-      int onesPlace = _number % 10;
-      string finalNumberString = "";
-      if ( _number > 9 && _number < 20)
-      {
 
-        result += _teens[_number];
-      }
-      finalNumberString = _onesPlace[onesPlace];
-      _number = _number - onesPlace;
 
-      if (_number >= 20 && _number < 100)
+      if (_number > 99 && _number < 1000)
       {
-        result += _tens[_number] + " ";
+        deleter = _number / 100;
+        _returnString = _returnString + _singlesString[deleter] + " hundred and ";
+        _number = _number - (deleter * 100);
+        Console.WriteLine(_number);
+        Console.WriteLine("i k33l j00");
+        Console.WriteLine(_returnString);
       }
-      else
+      if (_number > 19 && _number < 100)
       {
-        result += _onesPlace[_number];
+        deleter = _number / 10;
+        int onesPlace = _number % 10;
+        _returnString = _returnString + _tensString[deleter-1] + " " + _singlesString[onesPlace];
       }
-      return result + finalNumberString;
+      if (_number > 9 && _number < 20)
+      {
+        _returnString = _returnString + _teensString[_number];
+      }
+      if (_number < 10)
+      {
+        _returnString = _returnString + _singlesString[_number];
+      }
+
+
+
+
+
+      // if ( _number > 9 && _number < 20)
+      // {
+      //
+      //   result += _teens[_number];
+      // }
+      // finalNumberString = _onesPlace[onesPlace];
+      // _number = _number - onesPlace;
+      //
+      // if (_number >= 20 && _number < 100)
+      // {
+      //   result += _tens[_number] + " ";
+      // }
+      // else
+      // {
+      //   result += _onesPlace[_number];
+      // }
+      return _returnString;
     }
   }
 }

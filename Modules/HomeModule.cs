@@ -1,7 +1,7 @@
 using Nancy;
 using System.Collections.Generic;
 
-namespace ScrabbleNamespace
+namespace NumtoWordsNamespace
 {
   public class HomeModule : NancyModule
   {

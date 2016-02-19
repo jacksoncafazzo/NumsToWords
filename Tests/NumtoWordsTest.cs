@@ -30,5 +30,11 @@ namespace NumtoWordsNamespace
       NumtoWords newNumToWords = new NumtoWords(37);
       Assert.Equal("thirty seven", newNumToWords.WordIt());
     }
+    [Fact]
+    public void WordIt_Sending187WillReturnOneHundredEigthySeven_true()
+    {
+      NumtoWords newNumToWords = new NumtoWords(187);
+      Assert.Equal("one hundred and eighty seven", newNumToWords.WordIt());
+    }
   }
 }
